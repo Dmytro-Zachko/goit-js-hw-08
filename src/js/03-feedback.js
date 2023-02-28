@@ -22,15 +22,23 @@ function AddLocalStorageValue(event) {
 function OnFormSubmit(event) {
     event.preventDefault();
     event.currentTarget.reset();
+    console.log(JSON.parse(localStorage.getItem(LOCAL_KEY)));
     localStorage.removeItem(LOCAL_KEY)
 }
 
 function PopulateInputs(event) {
     const LocalValue = JSON.parse(localStorage.getItem(LOCAL_KEY));
-    console.log(LocalValue)
     if (LocalValue) {
         textareaRef.value = LocalValue.message;
         inputRef.value = LocalValue.email   
     }
 }
 PopulateInputs();
+
+// 2 case
+// function AddLocalStorageValue(event) {
+// //    const FormEl = event.currentTarget.elements
+//     const email = FormEl.email.value
+//     const message = FormEl.message.value
+//     const LocalStorageValue = localStorage.setItem("feedback-form-state", JSON.stringify({email, message}));  
+// }
